@@ -13,14 +13,12 @@ function getLocalDB() {
     movies.forEach((movie) => {
       movieStore[movie].actors.push(actorName)
     })
-
   })
 }
 
 function getProviderPromises() {
   return providers.map((provider) => {
     return new Promise((resolve, reject) => {
-
       axios.get(provider)
         .then((movies) => {
           movies.data.forEach(({ movieName, releaseDate }) => {
@@ -40,7 +38,6 @@ function getProviderPromises() {
 function getActorPromises() {
   return actorURLS.map((actorURL) => {
     return new Promise((resolve, reject) => {
-
       axios.get(actorURL)
         .then((actors) => {
           actors.data.forEach(({ actorName, movies }) => {
@@ -66,8 +63,10 @@ function populateDB() {
       for (let key in movieStore) {
         let movie = movieStore[key]
         db.insert(movie.movieName, movie.releaseDate, movie.actors, movie.studio)
+          .then((result) => {
+            console.log(result)
+          })
       }
-
     })
     .catch((err) => {
       console.log(err)
