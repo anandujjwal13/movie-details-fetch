@@ -4,10 +4,6 @@ const sequelize = new Sequelize(`postgres://anandujjwal:lifeisawsm@localhost:543
 
 
 const db = {
-  readAllMovies() {
-    const query = 'SELECT movieName , releaseDate , actors , studio FROM movies'
-    return sequelize.query(query)
-  },
   readOneMovie(movieName) {
     const query = 'SELECT movieName , releaseDate , actors , studio FROM movies where movieName = :movieName'
     return sequelize.query(query, { replacements: { movieName: movieName } })

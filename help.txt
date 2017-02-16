@@ -1,0 +1,4 @@
+
+sh run-test.sh && mode='test' ./node_modules/mocha/bin/mocha ./test/app-test.js
+
+sh empty-run-test.sh && mode='test' ./node_modules/mocha/bin/mocha ./test/sequelize-test.js
