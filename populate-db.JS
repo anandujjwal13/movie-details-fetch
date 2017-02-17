@@ -68,7 +68,7 @@ function populateDB() {
             console.log(result)
           })
           .catch((err) => {
-            console.log(err)
+            console.log(err.errors[0].message)
           })
       }
     })
