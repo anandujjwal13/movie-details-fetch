@@ -55,6 +55,7 @@ function getActorPromises() {
 }
 
 function populateDB() {
+  actorStore.splice(0, actorStore.length)
   return Promise.all([...getProviderPromises(), ...getActorPromises()])
     .then(() => {
       getLocalDB()
@@ -65,6 +66,9 @@ function populateDB() {
         db.insert(movie.movieName, movie.releaseDate, movie.actors, movie.studio)
           .then((result) => {
             console.log(result)
+          })
+          .catch((err) => {
+            console.log(err)
           })
       }
     })
